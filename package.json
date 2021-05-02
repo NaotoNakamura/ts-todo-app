@@ -7,7 +7,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
+    "@types/node": "^15.0.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "react": "^17.0.2",
@@ -20,7 +20,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
+    "fix":"npmrun-sformat&&npmrun-slint:fix",
+    "format":"prettier--write--loglevel=warn'src/**/*.{js,jsx,ts,tsx,gql,graphql,json}'",
+    "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint:conflict":"eslint--print-config.eslintrc.js|eslint-config-prettier-check",
+    "postinstall": "typesync"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +45,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/prettier": "^2.2.3",
+    "@types/testing-library__jest-dom": "^5.9.5",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.2.1",
+    "typesync": "^0.8.0"
   }
 }

@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import { FC, useState } from 'react';
 import './App.css';
 
-function App() {
+const App: FC = () => {
+  type Todo = {
+    text: string;
+  };
+  const [text, setText] = useState<string>('');
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const submitTask = (task: string) => {
+    if (task) {
+      setTodos((prevTodos) => [...prevTodos, { text: task }]);
+      setText('');
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>TS-TODO-APP</h1>
+      <p>タスクを入力</p>
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => {
+          setText(e.target.value);
+        }}
+      />
+      <button
+        type="submit"
+        onClick={() => {
+          submitTask(text);
+        }}
+      >
+        タスクを追加
+      </button>
+      {todos.map((todo) => (
+        <div>{todo.text}</div>
+      ))}
+    </>
   );
-}
+};
 
 export default App;
